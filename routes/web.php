@@ -19,7 +19,7 @@ use Inertia\Inertia;
 
 // Links
 Route::get('/', [LinkController::class, 'index'])
-    ->name('home')
+    ->name('links')
     ->middleware('auth');
 
 Route::post('/links', [LinkController::class, 'store'])

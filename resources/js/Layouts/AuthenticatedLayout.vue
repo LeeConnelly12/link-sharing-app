@@ -1,9 +1,11 @@
-<script setup></script>
+<script setup>
+import Nav from '@/Components/Nav.vue'
+</script>
 
 <template>
-  <nav></nav>
+  <Nav />
 
-  <main class="px-4">
+  <main class="mt-4 px-4">
     <slot />
   </main>
 </template>
