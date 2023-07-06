@@ -64,6 +64,12 @@ function submit() {
                 :options="platforms"
                 placeholder="Select platform"
               />
+              <p
+                v-if="form.errors[`links.${index}.platform`]"
+                class="mt-1 text-xs text-red-500"
+              >
+                {{ form.errors[`links.${index}.platform`] }}
+              </p>
             </div>
 
             <!-- Link -->
