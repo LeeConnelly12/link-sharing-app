@@ -37,7 +37,7 @@ defineEmits(['update:modelValue'])
     <p class="text-xs">{{ label }}</p>
     <label
       :for="`platform_${index}`"
-      class="flex h-10 w-full items-center justify-between rounded-lg bg-white px-4"
+      class="mt-1 flex h-10 w-full items-center justify-between rounded-lg bg-white px-4"
     >
       <p>{{ modelValue ? modelValue : placeholder }}</p>
       <svg
@@ -58,7 +58,7 @@ defineEmits(['update:modelValue'])
     </label>
     <ul
       v-if="open"
-      class="absolute left-0 right-0 top-full mt-2 grid max-h-[195px] gap-[1px] overflow-hidden overflow-y-auto rounded-lg bg-gray-100 shadow-sm"
+      class="absolute left-0 right-0 top-full z-10 mt-2 grid max-h-[195px] gap-[1px] overflow-hidden overflow-y-auto rounded-lg bg-light-gray shadow-sm"
       tabindex="-1"
     >
       <li v-for="option in options" :key="option" class="bg-white">

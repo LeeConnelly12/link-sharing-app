@@ -16,8 +16,15 @@ export default {
         sans: ['Instrument Sans', ...defaultTheme.fontFamily.sans],
       },
       colors: {
-        gray: {
-          100: '#FAFAFA',
+        purple: '#633CFF',
+        'purple-hover-color': '#BEADFF',
+        'light-purple': '#EFEBFF',
+        'normal-gray': '#737373',
+        'dark-gray': '#333',
+        'light-gray': '#FAFAFA',
+        borders: '#D9D9D9',
+        violet: {
+          600: '#BEADFF',
         },
       },
     },
