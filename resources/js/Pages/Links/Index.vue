@@ -1,9 +1,13 @@
 <script setup>
 import Layout from '@/Layouts/AuthenticatedLayout.vue'
+import DropDown from '@/Components/DropDown.vue'
 import { useForm } from '@inertiajs/vue3'
+import { ref } from 'vue'
 
 const props = defineProps({
   links: Array,
+  platforms: Array,
+  images: Array,
 })
 
 const form = useForm({
@@ -37,8 +41,8 @@ function submit() {
 
       <button @click="addLink" type="button">+ Add new link</button>
 
-      <ul class="grid gap-y-6">
-        <li
+      <div class="grid gap-y-6">
+        <article
           v-for="(link, index) in form.links"
           :key="link.id"
           class="grid grid-cols-2 rounded-xl bg-gray-100 p-5"
@@ -50,19 +54,12 @@ function submit() {
 
           <!-- Platform -->
           <div class="col-span-full mt-3">
-            <label :for="`platform_${index}`" class="text-xs">Platform</label>
-            <input
+            <DropDown
               v-model="link.platform"
-              type="text"
-              class="rounded-lg border-0"
-              :id="`platform_${index}`"
+              label="Platform"
+              :options="platforms"
+              placeholder="Select platform"
             />
-            <p
-              v-if="form.errors[`links.${index}.platform`]"
-              class="mt-1 text-xs text-red-500"
-            >
-              {{ form.errors[`links.${index}.platform`] }}
-            </p>
           </div>
 
           <!-- Link -->
@@ -71,8 +68,9 @@ function submit() {
             <input
               v-model="link.url"
               type="text"
-              class="rounded-lg border-0"
+              class="w-full rounded-lg border-0"
               :id="`link_${index}`"
+              required
             />
             <p
               v-if="form.errors[`links.${index}.url`]"
@@ -81,8 +79,8 @@ function submit() {
               {{ form.errors[`links.${index}.url`] }}
             </p>
           </div>
-        </li>
-      </ul>
+        </article>
+      </div>
 
       <button type="submit">Save</button>
     </form>
