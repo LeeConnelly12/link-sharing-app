@@ -28,7 +28,7 @@ import { Link } from '@inertiajs/vue3'
       </Link>
       <Link
         class="block rounded-lg px-7 py-3 text-normal-gray transition-colors hover:text-purple"
-        href="/"
+        href="/profile"
       >
         <svg width="21" height="20" fill="none" viewBox="0 0 21 20">
           <path

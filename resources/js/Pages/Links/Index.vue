@@ -116,7 +116,7 @@ function submit() {
 
       <div class="mt-4 px-6">
         <PrimaryButton
-          :disabled="!links.length && !form.links.length"
+          :disabled="form.processing || (!links.length && !form.links.length)"
           :loading="form.processing"
           type="submit"
         >
