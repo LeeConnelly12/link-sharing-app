@@ -26,10 +26,6 @@ const open = ref(false)
 const ignoreElement = ref(null)
 
 defineEmits(['update:modelValue'])
-
-function close() {
-  open.value = false
-}
 </script>
 
 <template>

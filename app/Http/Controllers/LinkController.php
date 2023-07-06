@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Enums\Platform;
 use App\Http\Resources\LinkResource;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 use Illuminate\Validation\Rules\Enum;
 
 class LinkController extends Controller
@@ -20,6 +21,7 @@ class LinkController extends Controller
 
         return inertia('Links/Index', [
             'links' => LinkResource::collection($links),
+            'platforms' => Platform::cases(),
         ]);
     }
 

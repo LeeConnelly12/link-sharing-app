@@ -21,10 +21,11 @@ it('can be viewed', function () {
         ->assertInertia(fn (Assert $page) => $page
             ->component('Links/Index')
             ->has('links', 3, fn (Assert $page) => $page
-                ->where('platform', $links->first()->platform->name())
+                ->where('platform', $links->first()->platform->value)
                 ->where('url', $links->first()->url)
                 ->etc()
             )
+            ->has('platforms')
         );
 });
 

@@ -15,7 +15,7 @@ return new class extends Migration
         Schema::create('links', function (Blueprint $table) {
             $table->id();
             $table->foreignIdFor(User::class)->constrained()->cascadeOnDelete();
-            $table->unsignedTinyInteger('platform');
+            $table->string('platform');
             $table->string('url');
             $table->timestamps();
         });
