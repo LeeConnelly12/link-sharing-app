@@ -59,6 +59,7 @@ defineEmits(['update:modelValue'])
     <ul
       v-if="open"
       class="absolute left-0 right-0 top-full mt-2 grid max-h-[195px] gap-[1px] overflow-hidden overflow-y-auto rounded-lg bg-gray-100 shadow-sm"
+      tabindex="-1"
     >
       <li v-for="option in options" :key="option" class="bg-white">
         <button
