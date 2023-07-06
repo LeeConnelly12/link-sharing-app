@@ -91,6 +91,12 @@ function profilePictureChanged(file) {
           <p class="mt-6 text-xs">
             Image must be below 1024x1024px. Use PNG or JPG format.
           </p>
+          <p
+            v-if="form.errors.profile_picture"
+            class="mt-1 text-xs text-red-500"
+          >
+            {{ form.errors.profile_picture }}
+          </p>
         </div>
       </div>
 
