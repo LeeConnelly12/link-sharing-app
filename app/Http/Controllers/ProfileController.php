@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
+use Illuminate\Validation\Rules\File;
 
 class ProfileController extends Controller
 {
@@ -21,9 +23,10 @@ class ProfileController extends Controller
     public function update(Request $request)
     {
         $request->validate([
+            'profile_picture' => ['nullable', File::types(['jpg', 'png'])],
             'first_name' => ['required', 'string', 'max:255'],
             'last_name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:'.User::class],
+            'email' => ['required', 'string', 'email', 'max:255', Rule::unique(User::class)->ignore($request->user())],
         ]);
 
         $request->user()->update([
@@ -31,6 +34,12 @@ class ProfileController extends Controller
             'last_name' => $request->last_name,
             'email' => $request->email,
         ]);
+
+        if ($request->hasFile('profile_picture')) {
+            $request->user()
+                ->addMedia($request->file('profile_picture'))
+                ->toMediaCollection('profile_picture');
+        }
 
         return back();
     }

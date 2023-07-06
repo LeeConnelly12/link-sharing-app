@@ -14,9 +14,11 @@ const form = useForm({
   email: user.value.email,
 })
 
-const url = ref('')
+const url = ref(user.value.profile_picture)
 
-async function submit() {}
+async function submit() {
+  form.post('/profile')
+}
 
 function profilePictureChanged(file) {
   url.value = URL.createObjectURL(file)
@@ -57,7 +59,35 @@ function profilePictureChanged(file) {
               <p class="mt-2 font-semibold">+ Upload Image</p>
             </div>
           </label>
-          <img v-else class="mt-4 h-48 w-48 object-cover" :src="url" />
+          <label v-else class="relative mt-4 block h-48 w-48">
+            <input
+              type="file"
+              accept=".png,.jpg"
+              class="hidden"
+              id="profile_picture"
+              @input="profilePictureChanged($event.target.files[0])"
+            />
+            <img :src="url" alt="" class="h-full w-full object-cover" />
+            <div
+              class="absolute inset-0 grid cursor-pointer place-items-center bg-black/40 text-white opacity-0 hover:opacity-100"
+            >
+              <div>
+                <svg
+                  class="mx-auto"
+                  width="40"
+                  height="40"
+                  fill="none"
+                  viewBox="0 0 40 40"
+                >
+                  <path
+                    fill="currentColor"
+                    d="M33.75 6.25H6.25a2.5 2.5 0 0 0-2.5 2.5v22.5a2.5 2.5 0 0 0 2.5 2.5h27.5a2.5 2.5 0 0 0 2.5-2.5V8.75a2.5 2.5 0 0 0-2.5-2.5Zm0 2.5v16.055l-4.073-4.072a2.5 2.5 0 0 0-3.536 0l-3.125 3.125-6.875-6.875a2.5 2.5 0 0 0-3.535 0L6.25 23.339V8.75h27.5ZM6.25 26.875l8.125-8.125 12.5 12.5H6.25v-4.375Zm27.5 4.375h-3.34l-5.624-5.625L27.91 22.5l5.839 5.84v2.91ZM22.5 15.625a1.875 1.875 0 1 1 3.75 0 1.875 1.875 0 0 1-3.75 0Z"
+                  />
+                </svg>
+                <p class="mt-2 font-semibold">+ Upload Image</p>
+              </div>
+            </div>
+          </label>
           <p class="mt-6 text-xs">
             Image must be below 1024x1024px. Use PNG or JPG format.
           </p>
