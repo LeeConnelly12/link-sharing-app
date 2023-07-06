@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\SaveLinksController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
@@ -15,6 +16,10 @@ use Inertia\Inertia;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+Route::post('/links', SaveLinksController::class)
+    ->name('links.store')
+    ->middleware('auth');
 
 Route::get('/', function () {
     return Inertia::render('Welcome', [
