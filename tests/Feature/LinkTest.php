@@ -2,11 +2,30 @@
 use App\Models\Link;
 use App\Models\User;
 use App\Enums\Platform;
-use function Pest\Laravel\{actingAs, post, assertDatabaseCount, assertDatabaseHas, assertDatabaseEmpty};
+use Inertia\Testing\AssertableInertia as Assert;
+use function Pest\Laravel\{actingAs, get, post, assertDatabaseCount, assertDatabaseHas, assertDatabaseEmpty};
 
 beforeEach(function () {
     $this->user = User::factory()->create();
     actingAs($this->user);
+});
+
+it('can be viewed', function () {
+    $links = Link::factory()
+        ->for($this->user)
+        ->count(3)
+        ->create();
+
+    get('/')
+        ->assertOk()
+        ->assertInertia(fn (Assert $page) => $page
+            ->component('Links/Index')
+            ->has('links', 3, fn (Assert $page) => $page
+                ->where('platform', $links->first()->platform->name())
+                ->where('url', $links->first()->url)
+                ->etc()
+            )
+        );
 });
 
 it('can be created', function () {

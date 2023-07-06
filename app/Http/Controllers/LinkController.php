@@ -3,12 +3,30 @@
 namespace App\Http\Controllers;
 
 use App\Enums\Platform;
+use App\Http\Resources\LinkResource;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rules\Enum;
 
-class SaveLinksController extends Controller
+class LinkController extends Controller
 {
-    public function __invoke(Request $request)
+    /**
+     * Display the user's links.
+     */
+    public function index(Request $request)
+    {
+        $links = $request->user()->links()
+            ->select('platform', 'url')
+            ->get();
+
+        return inertia('Links/Index', [
+            'links' => LinkResource::collection($links),
+        ]);
+    }
+
+    /**
+     * Update the user's links.
+     */
+    public function store(Request $request)
     {
         $request->validate([
             'links' => ['nullable', 'array'],

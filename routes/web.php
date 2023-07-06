@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\SaveLinksController;
+use App\Http\Controllers\LinkController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
@@ -17,22 +17,14 @@ use Inertia\Inertia;
 |
 */
 
-Route::post('/links', SaveLinksController::class)
-    ->name('links.store')
+// Links
+Route::get('/', [LinkController::class, 'index'])
+    ->name('home')
     ->middleware('auth');
 
-Route::get('/', function () {
-    return Inertia::render('Welcome', [
-        'canLogin' => Route::has('login'),
-        'canRegister' => Route::has('register'),
-        'laravelVersion' => Application::VERSION,
-        'phpVersion' => PHP_VERSION,
-    ]);
-});
-
-Route::get('/dashboard', function () {
-    return Inertia::render('Dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::post('/links', [LinkController::class, 'store'])
+    ->name('links.store')
+    ->middleware('auth');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
