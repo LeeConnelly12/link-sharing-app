@@ -1,103 +1,109 @@
 <script setup>
-import GuestLayout from '@/Layouts/GuestLayout.vue';
-import InputError from '@/Components/InputError.vue';
-import InputLabel from '@/Components/InputLabel.vue';
-import PrimaryButton from '@/Components/PrimaryButton.vue';
-import TextInput from '@/Components/TextInput.vue';
-import { Head, Link, useForm } from '@inertiajs/vue3';
+import GuestLayout from '@/Layouts/GuestLayout.vue'
+import PrimaryButton from '@/Components/PrimaryButton.vue'
+import { Head, Link, useForm } from '@inertiajs/vue3'
 
 const form = useForm({
-    name: '',
-    email: '',
-    password: '',
-    password_confirmation: '',
-});
+  email: '',
+  password: '',
+  password_confirmation: '',
+})
 
 const submit = () => {
-    form.post(route('register'), {
-        onFinish: () => form.reset('password', 'password_confirmation'),
-    });
-};
+  form.post('/register', {
+    onFinish: () => form.reset('password', 'password_confirmation'),
+  })
+}
 </script>
 
 <template>
-    <GuestLayout>
-        <Head title="Register" />
+  <GuestLayout>
+    <Head title="Register" />
 
-        <form @submit.prevent="submit">
-            <div>
-                <InputLabel for="name" value="Name" />
+    <h1 class="text-2xl font-bold text-dark-gray">Create account</h1>
+    <p class="mt-2">Let's get you started sharing your links!</p>
 
-                <TextInput
-                    id="name"
-                    type="text"
-                    class="mt-1 block w-full"
-                    v-model="form.name"
-                    required
-                    autofocus
-                    autocomplete="name"
-                />
+    <form @submit.prevent="submit" class="mt-10">
+      <div>
+        <label class="block text-xs text-dark-gray" for="email">
+          Email address
+        </label>
 
-                <InputError class="mt-2" :message="form.errors.name" />
-            </div>
+        <input
+          class="mt-2 h-12 w-full rounded-lg border border-borders px-4 placeholder:text-dark-gray/50"
+          placeholder="e.g. alex@email.com"
+          id="email"
+          type="email"
+          v-model="form.email"
+          required
+          autocomplete="username"
+        />
 
-            <div class="mt-4">
-                <InputLabel for="email" value="Email" />
+        <p v-if="form.errors.email" class="mt-2 text-xs text-red-500">
+          {{ form.errors.email }}
+        </p>
+      </div>
 
-                <TextInput
-                    id="email"
-                    type="email"
-                    class="mt-1 block w-full"
-                    v-model="form.email"
-                    required
-                    autocomplete="username"
-                />
+      <div class="mt-6">
+        <label class="block text-xs text-dark-gray" for="password">
+          Password
+        </label>
 
-                <InputError class="mt-2" :message="form.errors.email" />
-            </div>
+        <input
+          id="password"
+          class="mt-2 h-12 w-full rounded-lg border border-borders px-4 placeholder:text-dark-gray/50"
+          placeholder="Enter your password"
+          type="password"
+          v-model="form.password"
+          autocomplete="new-password"
+        />
 
-            <div class="mt-4">
-                <InputLabel for="password" value="Password" />
+        <p v-if="form.errors.password" class="mt-2 text-xs text-red-500">
+          {{ form.errors.password }}
+        </p>
+      </div>
 
-                <TextInput
-                    id="password"
-                    type="password"
-                    class="mt-1 block w-full"
-                    v-model="form.password"
-                    required
-                    autocomplete="new-password"
-                />
+      <div class="mt-6">
+        <label class="block text-xs text-dark-gray" for="password_confirmation">
+          Confirm Password
+        </label>
 
-                <InputError class="mt-2" :message="form.errors.password" />
-            </div>
+        <input
+          id="password_confirmation"
+          class="mt-2 h-12 w-full rounded-lg border border-borders px-4 placeholder:text-dark-gray/50"
+          placeholder="At least 8 characters"
+          type="password"
+          v-model="form.password_confirmation"
+          autocomplete="new-password"
+        />
 
-            <div class="mt-4">
-                <InputLabel for="password_confirmation" value="Confirm Password" />
+        <p
+          v-if="form.errors.password_confirmation"
+          class="mt-2 text-xs text-red-500"
+        >
+          {{ form.errors.password_confirmation }}
+        </p>
+      </div>
 
-                <TextInput
-                    id="password_confirmation"
-                    type="password"
-                    class="mt-1 block w-full"
-                    v-model="form.password_confirmation"
-                    required
-                    autocomplete="new-password"
-                />
+      <div class="mt-6">
+        <p class="text-xs">Password must contain at least 8 characters</p>
+      </div>
 
-                <InputError class="mt-2" :message="form.errors.password_confirmation" />
-            </div>
+      <div class="mt-6">
+        <PrimaryButton :loading="form.processing">
+          Create new account
+        </PrimaryButton>
+      </div>
 
-            <div class="flex items-center justify-end mt-4">
-                <Link
-                    :href="route('login')"
-                    class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                >
-                    Already registered?
-                </Link>
-
-                <PrimaryButton class="ml-4" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
-                    Register
-                </PrimaryButton>
-            </div>
-        </form>
-    </GuestLayout>
+      <div class="mt-6 text-center">
+        <p>Already have an account?</p>
+        <Link
+          href="/login"
+          class="rounded-md text-purple focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+        >
+          Login
+        </Link>
+      </div>
+    </form>
+  </GuestLayout>
 </template>

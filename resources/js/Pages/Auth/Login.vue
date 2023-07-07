@@ -1,29 +1,15 @@
 <script setup>
-import Checkbox from '@/Components/Checkbox.vue'
 import GuestLayout from '@/Layouts/GuestLayout.vue'
-import InputError from '@/Components/InputError.vue'
-import InputLabel from '@/Components/InputLabel.vue'
 import PrimaryButton from '@/Components/PrimaryButton.vue'
-import TextInput from '@/Components/TextInput.vue'
 import { Head, Link, useForm } from '@inertiajs/vue3'
-
-defineProps({
-  canResetPassword: {
-    type: Boolean,
-  },
-  status: {
-    type: String,
-  },
-})
 
 const form = useForm({
   email: '',
   password: '',
-  remember: false,
 })
 
 const submit = () => {
-  form.post(route('login'), {
+  form.post('/login', {
     onFinish: () => form.reset('password'),
   })
 }
@@ -33,57 +19,58 @@ const submit = () => {
   <GuestLayout>
     <Head title="Log in" />
 
-    <div v-if="status" class="mb-4 text-sm font-medium text-green-600">
-      {{ status }}
-    </div>
+    <h1 class="text-2xl font-bold text-dark-gray">Login</h1>
+    <p class="mt-2">Add your details below to get back into the app</p>
 
-    <form @submit.prevent="submit">
+    <form @submit.prevent="submit" class="mt-10">
       <div>
-        <InputLabel for="email" value="Email" />
+        <label class="block text-xs text-dark-gray" for="email">
+          Email address
+        </label>
 
-        <TextInput
+        <input
+          class="mt-2 h-12 w-full rounded-lg border border-borders px-4 placeholder:text-dark-gray/50"
+          placeholder="e.g. alex@email.com"
           id="email"
           type="email"
-          class="mt-1 block w-full"
           v-model="form.email"
           required
           autofocus
           autocomplete="username"
         />
 
-        <InputError class="mt-2" :message="form.errors.email" />
+        <p v-if="form.errors.email" class="mt-2 text-xs text-red-500">
+          {{ form.errors.email }}
+        </p>
       </div>
 
-      <div class="mt-4">
-        <InputLabel for="password" value="Password" />
+      <div class="mt-6">
+        <label class="block text-xs text-dark-gray" for="password">
+          Password
+        </label>
 
-        <TextInput
+        <input
           id="password"
+          class="mt-2 h-12 w-full rounded-lg border border-borders px-4 placeholder:text-dark-gray/50"
+          placeholder="Enter your password"
           type="password"
-          class="mt-1 block w-full"
           v-model="form.password"
           required
           autocomplete="current-password"
         />
 
-        <InputError class="mt-2" :message="form.errors.password" />
+        <p v-if="form.errors.password" class="mt-2 text-xs text-red-500">
+          {{ form.errors.password }}
+        </p>
       </div>
 
-      <div class="mt-4 block">
-        <label class="flex items-center">
-          <Checkbox name="remember" v-model:checked="form.remember" />
-          <span class="ml-2 text-sm text-gray-600">Remember me</span>
-        </label>
+      <div class="mt-6">
+        <PrimaryButton :loading="form.processing">Log in</PrimaryButton>
       </div>
 
-      <div class="mt-4 flex items-center justify-end">
-        <PrimaryButton
-          class="ml-4"
-          :class="{ 'opacity-25': form.processing }"
-          :disabled="form.processing"
-        >
-          Log in
-        </PrimaryButton>
+      <div class="mt-6 text-center">
+        <p>Don't have an account?</p>
+        <Link href="/register" class="text-purple">Create account</Link>
       </div>
     </form>
   </GuestLayout>
