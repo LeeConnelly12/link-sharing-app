@@ -13,7 +13,9 @@ class PreviewController extends Controller
      */
     public function index(Request $request)
     {
-        $links = $request->user()->links;
+        $links = $request->user()->links()
+            ->select('platform', 'url')
+            ->get();
 
         return inertia('Previews/Index', [
             'links' => LinkResource::collection($links),
@@ -25,7 +27,9 @@ class PreviewController extends Controller
      */
     public function show(User $user)
     {
-        $links = $user->links;
+        $links = $user->links()
+            ->select('platform', 'url')
+            ->get();
 
         return inertia('Previews/Show', [
             'user' => [
