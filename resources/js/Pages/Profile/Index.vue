@@ -30,7 +30,9 @@ function profilePictureChanged(file) {
   <Layout>
     <form @submit.prevent="submit" class="rounded-xl bg-white py-4">
       <div class="px-6">
-        <div class="rounded-xl bg-light-gray p-5">
+        <h1 class="text-2xl font-bold text-dark-gray">Profile Details</h1>
+        <p>Add your details to create a personal touch to your profile.</p>
+        <div class="mt-10 rounded-xl bg-light-gray p-5">
           <label for="profile_picture">Profile picture</label>
           <label
             v-if="!url"
@@ -59,7 +61,10 @@ function profilePictureChanged(file) {
               <p class="mt-2 font-semibold">+ Upload Image</p>
             </div>
           </label>
-          <label v-else class="relative mt-4 block h-48 w-48">
+          <label
+            v-else
+            class="relative mt-4 block h-48 w-48 overflow-hidden rounded-xl"
+          >
             <input
               type="file"
               accept=".png,.jpg"
@@ -152,11 +157,7 @@ function profilePictureChanged(file) {
       <hr class="mt-6 bg-borders" />
 
       <div class="mt-4 px-6">
-        <PrimaryButton
-          :disabled="form.processing"
-          :loading="form.processing"
-          type="submit"
-        >
+        <PrimaryButton :disabled="form.processing" :loading="form.processing">
           Save
         </PrimaryButton>
       </div>
