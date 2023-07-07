@@ -2,7 +2,7 @@
 defineProps({
   type: {
     type: String,
-    default: 'button',
+    default: 'submit',
   },
   loading: {
     type: Boolean,

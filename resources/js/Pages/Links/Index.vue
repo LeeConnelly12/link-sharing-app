@@ -118,7 +118,6 @@ function submit() {
         <PrimaryButton
           :disabled="form.processing || (!links.length && !form.links.length)"
           :loading="form.processing"
-          type="submit"
         >
           Save
         </PrimaryButton>
