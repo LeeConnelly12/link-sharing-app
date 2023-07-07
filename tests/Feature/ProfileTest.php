@@ -2,7 +2,7 @@
 use App\Models\User;
 use Illuminate\Http\UploadedFile;
 use Inertia\Testing\AssertableInertia as Assert;
-use function Pest\Laravel\{actingAs, get, put, assertDatabaseHas};
+use function Pest\Laravel\{actingAs, get, post, assertDatabaseHas};
 
 beforeEach(function () {
     $this->user = User::factory()->create([
@@ -22,7 +22,7 @@ it('can be viewed', function () {
 });
 
 it('can be updated', function () {
-    put('/profile', [
+    post('/profile', [
         'first_name' => 'new',
         'last_name' => 'name',
         'email' => 'newemail@example.com'
@@ -42,7 +42,7 @@ it('can upload profile picture', function () {
 
     $image = UploadedFile::fake()->image('profile_picture.jpg');
 
-    put('/profile', [
+    post('/profile', [
         'profile_picture' => $image,
         'first_name' => 'new',
         'last_name' => 'name',
@@ -50,5 +50,7 @@ it('can upload profile picture', function () {
     ])
     ->assertRedirect();
 
-    expect($this->user->getFirstMediaUrl('profile_picture'))->not->toBeNull();
+    expect($this->user->getFirstMediaUrl('profile_picture'))
+        ->not
+        ->toBeNull();
 });

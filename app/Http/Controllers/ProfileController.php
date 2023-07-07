@@ -24,8 +24,8 @@ class ProfileController extends Controller
     {
         $request->validate([
             'profile_picture' => ['nullable', File::types(['jpg', 'png'])],
-            'first_name' => ['required', 'string', 'max:255'],
-            'last_name' => ['required', 'string', 'max:255'],
+            'first_name' => ['nullable', 'string', 'max:255'],
+            'last_name' => ['nullable', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', Rule::unique(User::class)->ignore($request->user())],
         ]);
 
