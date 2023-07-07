@@ -50,7 +50,7 @@ import { Link } from '@inertiajs/vue3'
     </div>
     <Link
       class="rounded-lg border border-purple px-4 py-3 transition-colors hover:bg-light-purple"
-      href="/"
+      href="/preview"
     >
       <svg width="20" height="20" fill="none" viewBox="0 0 20 20">
         <path

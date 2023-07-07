@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\PreviewController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LinkController;
 use App\Http\Controllers\ProfileController;
@@ -24,6 +25,7 @@ Route::post('/links', [LinkController::class, 'store'])
     ->name('links.store')
     ->middleware('auth');
 
+// Profile
 Route::get('/profile', [ProfileController::class, 'index'])
     ->name('profile')
     ->middleware('auth');
@@ -31,5 +33,13 @@ Route::get('/profile', [ProfileController::class, 'index'])
 Route::post('/profile', [ProfileController::class, 'update'])
     ->name('profile.update')
     ->middleware('auth');
+
+// Preview
+Route::get('/preview', [PreviewController::class, 'index'])
+    ->name('preview')
+    ->middleware('auth');
+
+Route::get('/previews/{user}', [PreviewController::class, 'show'])
+    ->name('previews.show');
 
 require __DIR__.'/auth.php';
