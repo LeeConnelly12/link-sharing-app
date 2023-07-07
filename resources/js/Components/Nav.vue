@@ -16,7 +16,12 @@ import { Link } from '@inertiajs/vue3'
     </Link>
     <div class="flex items-center">
       <Link
-        class="block rounded-lg bg-light-purple px-7 py-3 text-purple transition-colors hover:bg-light-purple hover:text-purple"
+        class="block rounded-lg px-7 py-3 transition-colors"
+        :class="
+          route().current('links')
+            ? 'bg-light-purple text-purple'
+            : 'text-normal-gray hover:text-purple'
+        "
         href="/"
       >
         <svg width="21" height="20" fill="none" viewBox="0 0 21 20">
@@ -27,7 +32,12 @@ import { Link } from '@inertiajs/vue3'
         </svg>
       </Link>
       <Link
-        class="block rounded-lg px-7 py-3 text-normal-gray transition-colors hover:text-purple"
+        class="block rounded-lg px-7 py-3 transition-colors"
+        :class="
+          route().current('profile')
+            ? 'bg-light-purple text-purple'
+            : 'text-normal-gray hover:text-purple'
+        "
         href="/profile"
       >
         <svg width="21" height="20" fill="none" viewBox="0 0 21 20">
