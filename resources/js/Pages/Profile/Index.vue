@@ -1,7 +1,7 @@
 <script setup>
 import Layout from '@/Layouts/AuthenticatedLayout.vue'
 import PrimaryButton from '@/Components/PrimaryButton.vue'
-import { useForm, usePage } from '@inertiajs/vue3'
+import { useForm, usePage, Link } from '@inertiajs/vue3'
 import { computed } from 'vue'
 import { ref } from 'vue'
 
@@ -162,5 +162,15 @@ function profilePictureChanged(file) {
         </PrimaryButton>
       </div>
     </form>
+    <div class="mt-4 text-center">
+      <Link
+        :href="route('logout')"
+        method="post"
+        as="button"
+        class="rounded-md text-sm text-purple focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+      >
+        Log Out
+      </Link>
+    </div>
   </Layout>
 </template>
