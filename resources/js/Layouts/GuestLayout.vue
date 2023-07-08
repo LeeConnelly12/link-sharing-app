@@ -1,5 +1,4 @@
 <script setup>
-import ApplicationLogo from '@/Components/ApplicationLogo.vue'
 import { Link } from '@inertiajs/vue3'
 </script>
 
@@ -10,7 +9,11 @@ import { Link } from '@inertiajs/vue3'
     <div class="mx-auto sm:w-[476px]">
       <div class="sm:text-center">
         <Link href="/" class="inline-block">
-          <ApplicationLogo />
+          <img
+            class="h-10 w-[183px]"
+            src="/images/logo-devlinks-large.svg"
+            alt=""
+          />
         </Link>
       </div>
       <div class="mx-auto mt-16 sm:mt-12 sm:rounded-xl sm:bg-white sm:p-10">

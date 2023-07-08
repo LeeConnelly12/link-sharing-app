@@ -32,7 +32,7 @@ function profilePictureChanged(file) {
     <Head title="Profile" />
 
     <div
-      class="lg:grid lg:grid-cols-2 lg:gap-x-6 xl:h-[834px] xl:grid-cols-[1fr_1.5fr]"
+      class="lg:grid lg:grid-cols-2 lg:gap-x-6 xl:h-[835px] xl:grid-cols-[1fr_1.5fr]"
     >
       <div class="hidden place-items-center rounded-xl bg-white py-6 lg:grid">
         <Phone />
@@ -51,7 +51,9 @@ function profilePictureChanged(file) {
           <div
             class="mt-10 rounded-xl bg-light-gray p-5 md:grid md:grid-cols-[2fr_1fr_1fr] md:items-center md:gap-x-6"
           >
-            <label for="profile_picture">Profile picture</label>
+            <div>
+              <label for="profile_picture">Profile picture</label>
+            </div>
             <label
               v-if="!url"
               class="relative mt-4 grid h-48 w-48 cursor-pointer place-items-center rounded-xl bg-light-purple text-purple md:mt-0"
@@ -196,7 +198,7 @@ function profilePictureChanged(file) {
       </form>
     </div>
 
-    <div class="mt-4 text-center sm:mt-6">
+    <div class="mt-4 text-center sm:mt-6 sm:pr-10 sm:text-right">
       <Link
         :href="route('logout')"
         method="post"

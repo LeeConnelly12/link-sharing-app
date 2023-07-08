@@ -37,7 +37,7 @@ function submit() {
     <Head title="Links" />
 
     <div
-      class="lg:grid lg:grid-cols-2 lg:gap-x-6 xl:h-[834px] xl:grid-cols-[1fr_1.5fr]"
+      class="lg:grid lg:grid-cols-2 lg:gap-x-6 xl:h-[835px] xl:grid-cols-[1fr_1.5fr]"
     >
       <div class="hidden place-items-center rounded-xl bg-white py-6 lg:grid">
         <Phone />
