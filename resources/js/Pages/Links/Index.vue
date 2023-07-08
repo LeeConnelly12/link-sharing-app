@@ -4,13 +4,16 @@ import DropDown from '@/Components/DropDown.vue'
 import PrimaryButton from '@/Components/PrimaryButton.vue'
 import Phone from '@/Components/Phone.vue'
 import SecondaryButton from '@/Components/SecondaryButton.vue'
-import { useForm, Head } from '@inertiajs/vue3'
+import { useForm, Head, usePage } from '@inertiajs/vue3'
+import { computed } from 'vue'
 
 const props = defineProps({
   links: Array,
   platforms: Array,
   images: Array,
 })
+
+const user = computed(() => usePage().props.auth.user)
 
 const form = useForm({
   links: props.links,
@@ -40,7 +43,7 @@ function submit() {
       class="lg:grid lg:grid-cols-2 lg:gap-x-6 xl:h-[835px] xl:grid-cols-[1fr_1.5fr]"
     >
       <div class="hidden place-items-center rounded-xl bg-white py-6 lg:grid">
-        <Phone />
+        <Phone :user="user" :links="form.links" />
       </div>
       <form
         @submit.prevent="submit"

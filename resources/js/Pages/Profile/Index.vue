@@ -9,7 +9,7 @@ import { ref } from 'vue'
 const user = computed(() => usePage().props.auth.user)
 
 const form = useForm({
-  profile_picture: null,
+  profile_picture: user.value.profile_picture,
   first_name: user.value.first_name,
   last_name: user.value.last_name,
   email: user.value.email,
@@ -35,7 +35,7 @@ function profilePictureChanged(file) {
       class="lg:grid lg:grid-cols-2 lg:gap-x-6 xl:h-[835px] xl:grid-cols-[1fr_1.5fr]"
     >
       <div class="hidden place-items-center rounded-xl bg-white py-6 lg:grid">
-        <Phone />
+        <Phone :user="form" :links="user.links" />
       </div>
       <form
         @submit.prevent="submit"
