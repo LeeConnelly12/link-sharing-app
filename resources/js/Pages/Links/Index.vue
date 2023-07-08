@@ -6,6 +6,7 @@ import Phone from '@/Components/Phone.vue'
 import SecondaryButton from '@/Components/SecondaryButton.vue'
 import { useForm, Head, usePage } from '@inertiajs/vue3'
 import { computed } from 'vue'
+import { SlickList, SlickItem, DragHandle } from 'vue-slicksort'
 
 const props = defineProps({
   links: Array,
@@ -62,57 +63,73 @@ function submit() {
             + Add new link
           </SecondaryButton>
 
-          <section class="mt-6 grid gap-y-6" v-if="form.links.length > 0">
-            <article
+          <SlickList
+            v-if="form.links.length > 0"
+            axis="y"
+            v-model:list="form.links"
+            useDragHandle
+          >
+            <SlickItem
               v-for="(link, index) in form.links"
-              :key="link.id"
-              class="grid grid-cols-2 rounded-xl bg-light-gray p-5"
+              :key="link"
+              :index="index"
+              class="pt-6"
             >
-              <p class="font-bold">Link #{{ index + 1 }}</p>
-              <button
-                @click="removeLink(index)"
-                class="text-right"
-                type="button"
+              <article
+                class="grid grid-cols-[auto_1fr_auto] items-center gap-x-2 rounded-xl bg-light-gray p-5"
               >
-                Remove
-              </button>
+                <DragHandle>
+                  <svg width="12" height="6" fill="none" viewBox="0 0 12 6">
+                    <path fill="#737373" d="M0 0h12v1H0zM0 5h12v1H0z" />
+                  </svg>
+                </DragHandle>
+                <p class="font-bold">Link #{{ index + 1 }}</p>
 
-              <!-- Platform -->
-              <div class="col-span-full mt-3">
-                <DropDown
-                  v-model="link.platform"
-                  label="Platform"
-                  :options="platforms"
-                  placeholder="Select platform"
-                />
-                <p
-                  v-if="form.errors[`links.${index}.platform`]"
-                  class="mt-1 text-xs text-red-500"
+                <button
+                  @click="removeLink(index)"
+                  class="text-right"
+                  type="button"
                 >
-                  {{ form.errors[`links.${index}.platform`] }}
-                </p>
-              </div>
+                  Remove
+                </button>
 
-              <!-- Link -->
-              <div class="col-span-full mt-3">
-                <label :for="`link_${index}`" class="text-xs">Link</label>
-                <input
-                  v-model="link.url"
-                  type="text"
-                  placeholder="e.g. https://www.github.com/johnappleseed"
-                  class="h-12 w-full rounded-lg border border-borders px-4 placeholder:text-dark-gray/50"
-                  :id="`link_${index}`"
-                  required
-                />
-                <p
-                  v-if="form.errors[`links.${index}.url`]"
-                  class="mt-1 text-xs text-red-500"
-                >
-                  {{ form.errors[`links.${index}.url`] }}
-                </p>
-              </div>
-            </article>
-          </section>
+                <!-- Platform -->
+                <div class="col-span-full mt-3">
+                  <DropDown
+                    v-model="link.platform"
+                    label="Platform"
+                    :options="platforms"
+                    placeholder="Select platform"
+                  />
+                  <p
+                    v-if="form.errors[`links.${index}.platform`]"
+                    class="mt-1 text-xs text-red-500"
+                  >
+                    {{ form.errors[`links.${index}.platform`] }}
+                  </p>
+                </div>
+
+                <!-- Link -->
+                <div class="col-span-full mt-3">
+                  <label :for="`link_${index}`" class="text-xs">Link</label>
+                  <input
+                    v-model="link.url"
+                    type="text"
+                    placeholder="e.g. https://www.github.com/johnappleseed"
+                    class="h-12 w-full rounded-lg border border-borders px-4 placeholder:text-dark-gray/50"
+                    :id="`link_${index}`"
+                    required
+                  />
+                  <p
+                    v-if="form.errors[`links.${index}.url`]"
+                    class="mt-1 text-xs text-red-500"
+                  >
+                    {{ form.errors[`links.${index}.url`] }}
+                  </p>
+                </div>
+              </article>
+            </SlickItem>
+          </SlickList>
 
           <section
             v-else

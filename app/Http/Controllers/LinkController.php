@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Enums\Platform;
 use App\Http\Resources\LinkResource;
+use App\Models\Link;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 use Illuminate\Validation\Rules\Enum;
@@ -16,7 +17,7 @@ class LinkController extends Controller
     public function index(Request $request)
     {
         $links = $request->user()->links()
-            ->select('platform', 'url')
+            ->select('id', 'platform', 'url', 'order')
             ->get();
 
         return inertia('Links/Index', [
@@ -40,9 +41,14 @@ class LinkController extends Controller
             ->links()
             ->delete();
 
-        $request->user()
-            ->links()
-            ->createMany($request->links);
+        foreach ($request->links as $index => $link) {
+            Link::query()->create([
+                'user_id' => $request->user()->id,
+                'platform' => $link['platform'],
+                'url' => $link['url'],
+                'order' => $index,
+            ]);
+        }
 
         return back();
     }

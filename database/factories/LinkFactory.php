@@ -22,6 +22,7 @@ class LinkFactory extends Factory
             'user_id' => User::factory(),
             'platform' => fake()->randomElement(Platform::cases()),
             'url' => fake()->url(),
+            'order' => fake()->numberBetween(0, 100),
         ];
     }
 }

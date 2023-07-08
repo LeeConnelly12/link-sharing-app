@@ -42,7 +42,7 @@ class HandleInertiaRequests extends Middleware
                     'profile_picture' => $user->getFirstMediaUrl('profile_picture'),
                     'logged_in' => auth()->check(),
                     'links' => $user->links()
-                        ->select('platform', 'url')
+                        ->select('id', 'platform', 'url', 'order')
                         ->get(),
                 ] : [],
             ],

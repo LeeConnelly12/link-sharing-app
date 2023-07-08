@@ -15,8 +15,10 @@ class LinkResource extends JsonResource
     public function toArray(Request $request): array
     {
         return [
+            'id' => $this->id,
             'platform' => $this->platform,
             'url' => $this->url,
+            'order' => $this->order,
         ];
     }
 }
