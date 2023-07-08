@@ -1,7 +1,7 @@
 <script setup>
 import PreviewLayout from '@/Layouts/PreviewLayout.vue'
 import SocialLink from '@/Components/SocialLink.vue'
-import { usePage } from '@inertiajs/vue3'
+import { usePage, Head } from '@inertiajs/vue3'
 import { computed } from 'vue'
 
 const user = computed(() => usePage().props.auth.user)
@@ -13,6 +13,8 @@ defineProps({
 
 <template>
   <PreviewLayout>
+    <Head title="Preview" />
+
     <img
       class="inline-block h-28 w-28 rounded-full border-4 border-purple object-cover"
       :src="user.profile_picture"

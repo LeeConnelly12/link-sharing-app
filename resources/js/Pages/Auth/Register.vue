@@ -18,7 +18,7 @@ const submit = () => {
 
 <template>
   <GuestLayout>
-    <Head title="Register" />
+    <Head title="Create Account" />
 
     <h1 class="text-2xl font-bold text-dark-gray">Create account</h1>
     <p class="mt-2">Let's get you started sharing your links!</p>

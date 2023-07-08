@@ -1,7 +1,7 @@
 <script setup>
 import Layout from '@/Layouts/AuthenticatedLayout.vue'
 import PrimaryButton from '@/Components/PrimaryButton.vue'
-import { useForm, usePage, Link } from '@inertiajs/vue3'
+import { useForm, usePage, Link, Head } from '@inertiajs/vue3'
 import { computed } from 'vue'
 import { ref } from 'vue'
 
@@ -28,6 +28,8 @@ function profilePictureChanged(file) {
 
 <template>
   <Layout>
+    <Head title="Profile" />
+
     <form @submit.prevent="submit" class="rounded-xl bg-white py-4">
       <div class="px-6">
         <h1 class="text-2xl font-bold text-dark-gray">Profile Details</h1>

@@ -1,6 +1,7 @@
 <script setup>
 import PreviewLayout from '@/Layouts/PreviewLayout.vue'
 import SocialLink from '@/Components/SocialLink.vue'
+import { Head } from '@inertiajs/vue3'
 
 defineProps({
   user: Object,
@@ -9,6 +10,8 @@ defineProps({
 
 <template>
   <PreviewLayout>
+    <Head title="Preview" />
+
     <img
       class="inline-block h-28 w-28 rounded-full border-4 border-purple object-cover"
       :src="user.profile_picture"

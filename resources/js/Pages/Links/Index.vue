@@ -3,7 +3,7 @@ import Layout from '@/Layouts/AuthenticatedLayout.vue'
 import DropDown from '@/Components/DropDown.vue'
 import PrimaryButton from '@/Components/PrimaryButton.vue'
 import SecondaryButton from '@/Components/SecondaryButton.vue'
-import { useForm } from '@inertiajs/vue3'
+import { useForm, Head } from '@inertiajs/vue3'
 
 const props = defineProps({
   links: Array,
@@ -33,6 +33,8 @@ function submit() {
 
 <template>
   <Layout>
+    <Head title="Links" />
+
     <form @submit.prevent="submit" class="rounded-xl bg-white py-4">
       <div class="px-6">
         <h1 class="text-2xl font-bold text-dark-gray">Customize your links</h1>
