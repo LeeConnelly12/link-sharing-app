@@ -15,7 +15,7 @@ async function copyShareLinkToClipboard() {
   <div
     class="absolute left-0 right-0 top-0 hidden h-[357px] rounded-bl-[2rem] rounded-br-[2rem] bg-purple sm:block"
   ></div>
-  <nav class="sm:px-6 sm:pt-6" v-if="user">
+  <nav class="sm:px-6 sm:pt-6" v-if="user?.logged_in">
     <div
       class="relative flex justify-between gap-x-4 p-4 sm:rounded-xl sm:bg-white"
     >

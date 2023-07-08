@@ -40,6 +40,7 @@ class HandleInertiaRequests extends Middleware
                     'last_name' => $user->last_name,
                     'email' => $user->email,
                     'profile_picture' => $user->getFirstMediaUrl('profile_picture'),
+                    'logged_in' => auth()->check(),
                 ] : [],
             ],
             'ziggy' => function () use ($request) {
