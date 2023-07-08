@@ -37,9 +37,10 @@ defineEmits(['update:modelValue'])
     <p class="text-xs">{{ label }}</p>
     <label
       :for="`platform_${index}`"
-      class="mt-1 flex h-10 w-full items-center justify-between rounded-lg bg-white px-4"
+      class="mt-1 flex h-12 w-full items-center justify-between rounded-lg border border-borders bg-white px-4"
     >
-      <p>{{ modelValue ? modelValue : placeholder }}</p>
+      <p v-if="modelValue">{{ modelValue }}</p>
+      <p v-else class="text-dark-gray/50">{{ placeholder }}</p>
       <svg
         class="transform"
         :class="{ 'rotate-180': open }"
