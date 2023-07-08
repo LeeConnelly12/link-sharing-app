@@ -7,19 +7,21 @@ import { Link } from '@inertiajs/vue3'
     <div
       class="grid grid-cols-[20%_auto_20%] items-center justify-between rounded-xl bg-white px-4 py-4"
     >
-      <Link href="/">
-        <picture>
-          <source
-            media="(min-width: 768px)"
-            srcset="/images/logo-devlinks-large.svg"
-          />
-          <img
-            class="h-8 w-8 md:w-[146px]"
-            src="/images/logo-devlinks-small.svg"
-            alt=""
-          />
-        </picture>
-      </Link>
+      <div>
+        <Link href="/" class="inline-block">
+          <picture>
+            <source
+              media="(min-width: 768px)"
+              srcset="/images/logo-devlinks-large.svg"
+            />
+            <img
+              class="h-8 w-8 md:w-[146px]"
+              src="/images/logo-devlinks-small.svg"
+              alt=""
+            />
+          </picture>
+        </Link>
+      </div>
       <div class="flex items-center justify-center">
         <Link
           class="flex items-center gap-x-2 rounded-lg px-7 py-3 transition-colors"
