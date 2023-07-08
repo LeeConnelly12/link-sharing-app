@@ -68,7 +68,7 @@ const submit = () => {
         <PrimaryButton :loading="form.processing">Log in</PrimaryButton>
       </div>
 
-      <div class="mt-6 text-center">
+      <div class="mt-6 text-center sm:flex sm:justify-center sm:gap-x-1">
         <p>Don't have an account?</p>
         <Link href="/register" class="text-purple">Create account</Link>
       </div>
