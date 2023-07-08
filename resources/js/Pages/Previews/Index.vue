@@ -1,5 +1,5 @@
 <script setup>
-import PreviewLayout from '@/Layouts/PreviewLayout.vue'
+import Layout from '@/Layouts/PreviewLayout.vue'
 import SocialLink from '@/Components/SocialLink.vue'
 import { usePage, Head } from '@inertiajs/vue3'
 import { computed } from 'vue'
@@ -12,7 +12,7 @@ defineProps({
 </script>
 
 <template>
-  <PreviewLayout>
+  <Layout>
     <Head title="Preview" />
 
     <img
@@ -27,5 +27,5 @@ defineProps({
     <div class="mt-14 grid gap-y-5">
       <SocialLink v-for="link in links" :key="link.id" :link="link" />
     </div>
-  </PreviewLayout>
+  </Layout>
 </template>

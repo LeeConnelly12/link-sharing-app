@@ -1,5 +1,5 @@
 <script setup>
-import GuestLayout from '@/Layouts/GuestLayout.vue'
+import Layout from '@/Layouts/GuestLayout.vue'
 import PrimaryButton from '@/Components/PrimaryButton.vue'
 import { Head, Link, useForm } from '@inertiajs/vue3'
 
@@ -17,7 +17,7 @@ const submit = () => {
 </script>
 
 <template>
-  <GuestLayout>
+  <Layout>
     <Head title="Create Account" />
 
     <h1 class="text-2xl font-bold text-dark-gray">Create account</h1>
@@ -105,5 +105,5 @@ const submit = () => {
         </Link>
       </div>
     </form>
-  </GuestLayout>
+  </Layout>
 </template>
