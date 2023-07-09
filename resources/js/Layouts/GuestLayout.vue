@@ -10,8 +10,9 @@ import { Link } from '@inertiajs/vue3'
       <div class="sm:text-center">
         <Link href="/" class="inline-block">
           <img
-            class="h-10 w-[183px]"
             src="/images/logo-devlinks-large.svg"
+            width="183"
+            height="40"
             alt=""
           />
         </Link>

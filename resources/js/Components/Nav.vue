@@ -15,8 +15,10 @@ import { Link } from '@inertiajs/vue3'
               srcset="/images/logo-devlinks-large.svg"
             />
             <img
-              class="h-8 w-8 md:w-[146px]"
+              class="md:w-[146px]"
               src="/images/logo-devlinks-small.svg"
+              width="32"
+              height="32"
               alt=""
             />
           </picture>

@@ -13,8 +13,10 @@ defineProps({
     <Head title="Preview" />
 
     <img
-      class="inline-block h-28 w-28 rounded-full border-4 border-purple object-cover"
+      class="inline-block rounded-full border-4 border-purple object-cover"
       :src="user.profile_picture"
+      width="112"
+      height="112"
       alt=""
     />
     <h1 class="mt-6 text-[2rem] font-bold text-dark-gray">

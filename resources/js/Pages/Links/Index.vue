@@ -79,9 +79,12 @@ function submit() {
               class="grid grid-cols-[auto_1fr_auto] items-center gap-x-2 rounded-xl bg-light-gray p-5"
             >
               <DragHandle class="cursor-pointer">
-                <svg width="12" height="6" fill="none" viewBox="0 0 12 6">
-                  <path fill="#737373" d="M0 0h12v1H0zM0 5h12v1H0z" />
-                </svg>
+                <img
+                  src="/images/icon-drag-and-drop.svg"
+                  width="12"
+                  height="6"
+                  alt=""
+                />
               </DragHandle>
               <p class="font-bold">Link #{{ index + 1 }}</p>
 
@@ -138,8 +141,10 @@ function submit() {
             <div>
               <img
                 src="/images/illustration-empty.svg"
+                width="251"
+                height="161"
                 alt=""
-                class="mx-auto px-8"
+                class="mx-auto"
               />
               <h2
                 class="mt-6 text-2xl font-bold text-dark-gray sm:mt-10 sm:text-[2rem]"
@@ -148,7 +153,7 @@ function submit() {
               </h2>
               <p class="mt-6 sm:max-w-[488px]">
                 Use the “Add new link” button to get started. Once you have more
-                than one link, you can reorder and edit them. We’re here to help
+                than one link, you can reorder and edit them. We're here to help
                 you share your profiles with everyone!
               </p>
             </div>

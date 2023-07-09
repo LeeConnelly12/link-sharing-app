@@ -87,7 +87,13 @@ function profilePictureChanged(file) {
                 id="profile_picture"
                 @input="profilePictureChanged($event.target.files[0])"
               />
-              <img :src="url" alt="" class="h-full w-full object-cover" />
+              <img
+                :src="url"
+                width="192"
+                height="192"
+                alt=""
+                class="h-full w-full object-cover"
+              />
               <div
                 class="absolute inset-0 grid cursor-pointer place-items-center bg-black/40 text-white opacity-0 hover:opacity-100"
               >
