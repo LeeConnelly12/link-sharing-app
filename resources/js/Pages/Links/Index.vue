@@ -40,17 +40,15 @@ function submit() {
   <Layout>
     <Head title="Links" />
 
-    <div
-      class="lg:grid lg:grid-cols-2 lg:gap-x-6 xl:h-[835px] xl:grid-cols-[1fr_1.5fr]"
-    >
-      <div class="hidden place-items-center rounded-xl bg-white py-6 lg:grid">
+    <div class="lg:grid lg:grid-cols-2 lg:gap-x-6 xl:grid-cols-[1fr_1.5fr]">
+      <div class="hidden place-items-center rounded-xl bg-white lg:grid">
         <Phone :user="user" :links="form.links" />
       </div>
       <form
         @submit.prevent="submit"
-        class="rounded-xl bg-white py-4 sm:pb-6 sm:pt-10"
+        class="grid min-h-[785px] grid-rows-[auto_1fr_auto] rounded-xl bg-white lg:h-[785px]"
       >
-        <div class="px-6 sm:px-10">
+        <div class="px-6 pb-6 pt-6 sm:px-10 sm:pt-10">
           <h1 class="text-2xl font-bold text-dark-gray sm:text-[2rem]">
             Customize your links
           </h1>
@@ -62,78 +60,80 @@ function submit() {
           <SecondaryButton @click="addLink" class="mt-10">
             + Add new link
           </SecondaryButton>
+        </div>
 
-          <SlickList
-            v-if="form.links.length > 0"
-            axis="y"
-            v-model:list="form.links"
-            useDragHandle
+        <SlickList
+          v-if="form.links.length > 0"
+          axis="y"
+          v-model:list="form.links"
+          useDragHandle
+          class="px-6 sm:px-10 lg:overflow-y-auto"
+        >
+          <SlickItem
+            v-for="(link, index) in form.links"
+            :key="link"
+            :index="index"
+            class="pb-6"
           >
-            <SlickItem
-              v-for="(link, index) in form.links"
-              :key="link"
-              :index="index"
-              class="pt-6"
+            <article
+              class="grid grid-cols-[auto_1fr_auto] items-center gap-x-2 rounded-xl bg-light-gray p-5"
             >
-              <article
-                class="grid grid-cols-[auto_1fr_auto] items-center gap-x-2 rounded-xl bg-light-gray p-5"
+              <DragHandle class="cursor-pointer">
+                <svg width="12" height="6" fill="none" viewBox="0 0 12 6">
+                  <path fill="#737373" d="M0 0h12v1H0zM0 5h12v1H0z" />
+                </svg>
+              </DragHandle>
+              <p class="font-bold">Link #{{ index + 1 }}</p>
+
+              <button
+                @click="removeLink(index)"
+                class="text-right"
+                type="button"
               >
-                <DragHandle>
-                  <svg width="12" height="6" fill="none" viewBox="0 0 12 6">
-                    <path fill="#737373" d="M0 0h12v1H0zM0 5h12v1H0z" />
-                  </svg>
-                </DragHandle>
-                <p class="font-bold">Link #{{ index + 1 }}</p>
+                Remove
+              </button>
 
-                <button
-                  @click="removeLink(index)"
-                  class="text-right"
-                  type="button"
+              <!-- Platform -->
+              <div class="col-span-full mt-3">
+                <DropDown
+                  v-model="link.platform"
+                  label="Platform"
+                  :options="platforms"
+                  placeholder="Select platform"
+                />
+                <p
+                  v-if="form.errors[`links.${index}.platform`]"
+                  class="mt-1 text-xs text-red-500"
                 >
-                  Remove
-                </button>
+                  {{ form.errors[`links.${index}.platform`] }}
+                </p>
+              </div>
 
-                <!-- Platform -->
-                <div class="col-span-full mt-3">
-                  <DropDown
-                    v-model="link.platform"
-                    label="Platform"
-                    :options="platforms"
-                    placeholder="Select platform"
-                  />
-                  <p
-                    v-if="form.errors[`links.${index}.platform`]"
-                    class="mt-1 text-xs text-red-500"
-                  >
-                    {{ form.errors[`links.${index}.platform`] }}
-                  </p>
-                </div>
+              <!-- Link -->
+              <div class="col-span-full mt-3">
+                <label :for="`link_${index}`" class="text-xs">Link</label>
+                <input
+                  v-model="link.url"
+                  type="text"
+                  placeholder="e.g. https://www.github.com/johnappleseed"
+                  class="h-12 w-full rounded-lg border border-borders px-4 placeholder:text-dark-gray/50"
+                  :id="`link_${index}`"
+                  required
+                />
+                <p
+                  v-if="form.errors[`links.${index}.url`]"
+                  class="mt-1 text-xs text-red-500"
+                >
+                  {{ form.errors[`links.${index}.url`] }}
+                </p>
+              </div>
+            </article>
+          </SlickItem>
+        </SlickList>
 
-                <!-- Link -->
-                <div class="col-span-full mt-3">
-                  <label :for="`link_${index}`" class="text-xs">Link</label>
-                  <input
-                    v-model="link.url"
-                    type="text"
-                    placeholder="e.g. https://www.github.com/johnappleseed"
-                    class="h-12 w-full rounded-lg border border-borders px-4 placeholder:text-dark-gray/50"
-                    :id="`link_${index}`"
-                    required
-                  />
-                  <p
-                    v-if="form.errors[`links.${index}.url`]"
-                    class="mt-1 text-xs text-red-500"
-                  >
-                    {{ form.errors[`links.${index}.url`] }}
-                  </p>
-                </div>
-              </article>
-            </SlickItem>
-          </SlickList>
-
-          <section
-            v-else
-            class="mt-6 grid h-[428px] place-items-center rounded-xl bg-light-gray px-5 text-center"
+        <div v-else class="mb-6 px-5 text-center sm:px-10">
+          <div
+            class="grid h-full place-items-center rounded-xl bg-light-gray lg:px-10"
           >
             <div>
               <img
@@ -152,12 +152,12 @@ function submit() {
                 you share your profiles with everyone!
               </p>
             </div>
-          </section>
+          </div>
         </div>
 
-        <hr class="mt-6 bg-borders sm:mt-10" />
-
-        <div class="mt-4 px-6 sm:mt-6 sm:px-10 sm:text-right">
+        <div
+          class="relative rounded-bl-xl rounded-br-xl border-t border-borders bg-white px-6 pb-4 pt-6 sm:px-10 sm:pb-6 sm:text-right"
+        >
           <PrimaryButton
             class="sm:w-28"
             :disabled="form.processing || (!links.length && !form.links.length)"

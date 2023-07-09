@@ -1,6 +1,5 @@
 <script setup>
 import SocialLink from '@/Components/SocialLink.vue'
-import { getColorForPlatform } from '@/platforms.js'
 
 defineProps({
   user: Object,

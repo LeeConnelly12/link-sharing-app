@@ -31,10 +31,8 @@ function profilePictureChanged(file) {
   <Layout>
     <Head title="Profile" />
 
-    <div
-      class="lg:grid lg:grid-cols-2 lg:gap-x-6 xl:h-[835px] xl:grid-cols-[1fr_1.5fr]"
-    >
-      <div class="hidden place-items-center rounded-xl bg-white py-6 lg:grid">
+    <div class="lg:grid lg:grid-cols-2 lg:gap-x-6 xl:grid-cols-[1fr_1.5fr]">
+      <div class="hidden place-items-center rounded-xl bg-white lg:grid">
         <Phone :user="form" :links="user.links" />
       </div>
       <form
@@ -49,7 +47,7 @@ function profilePictureChanged(file) {
             Add your details to create a personal touch to your profile.
           </p>
           <div
-            class="mt-10 rounded-xl bg-light-gray p-5 md:grid md:grid-cols-[2fr_1fr_1fr] md:items-center md:gap-x-6"
+            class="mt-10 rounded-xl bg-light-gray p-5 md:grid md:grid-cols-[2fr_1fr_1fr] md:items-center md:gap-x-6 lg:grid-cols-1 xl:grid-cols-[2fr_1fr_1fr]"
           >
             <div>
               <label for="profile_picture">Profile picture</label>
@@ -83,7 +81,7 @@ function profilePictureChanged(file) {
             </label>
             <label
               v-else
-              class="relative mt-4 block h-48 w-48 overflow-hidden rounded-xl md:mt-0"
+              class="relative mt-4 block h-48 w-48 overflow-hidden rounded-xl md:mt-0 lg:mt-4 xl:mt-0"
             >
               <input
                 type="file"
@@ -113,7 +111,7 @@ function profilePictureChanged(file) {
                 </div>
               </div>
             </label>
-            <p class="mt-6 text-xs">
+            <p class="mt-6 text-xs md:mt-0 lg:mt-6 xl:mt-0">
               Image must be below 1024x1024px. Use PNG or JPG format.
             </p>
             <p
