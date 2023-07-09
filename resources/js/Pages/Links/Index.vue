@@ -7,6 +7,9 @@ import SecondaryButton from '@/Components/SecondaryButton.vue'
 import { useForm, Head, usePage } from '@inertiajs/vue3'
 import { computed } from 'vue'
 import { SlickList, SlickItem, DragHandle } from 'vue-slicksort'
+import InputLabel from '@/Components/InputLabel.vue'
+import TextInput from '@/Components/TextInput.vue'
+import InputError from '@/Components/InputError.vue'
 
 const props = defineProps({
   links: Array,
@@ -96,7 +99,6 @@ function submit() {
                 Remove
               </button>
 
-              <!-- Platform -->
               <div class="col-span-full mt-3">
                 <DropDown
                   v-model="link.platform"
@@ -104,31 +106,29 @@ function submit() {
                   :options="platforms"
                   placeholder="Select platform"
                 />
-                <p
-                  v-if="form.errors[`links.${index}.platform`]"
-                  class="mt-1 text-xs text-red-500"
-                >
-                  {{ form.errors[`links.${index}.platform`] }}
-                </p>
+
+                <InputError
+                  class="mt-2"
+                  :message="form.errors[`links.${index}.platform`]"
+                />
               </div>
 
-              <!-- Link -->
               <div class="col-span-full mt-3">
-                <label :for="`link_${index}`" class="text-xs">Link</label>
-                <input
-                  v-model="link.url"
-                  type="text"
-                  placeholder="e.g. https://www.github.com/johnappleseed"
-                  class="h-12 w-full rounded-lg border border-borders px-4 placeholder:text-dark-gray/50"
+                <InputLabel :for="`link_${index}`" value="Link" />
+
+                <TextInput
                   :id="`link_${index}`"
+                  type="text"
+                  class="mt-1 block w-full"
+                  placeholder="e.g. https://www.github.com/johnappleseed"
+                  v-model="link.url"
                   required
                 />
-                <p
-                  v-if="form.errors[`links.${index}.url`]"
-                  class="mt-1 text-xs text-red-500"
-                >
-                  {{ form.errors[`links.${index}.url`] }}
-                </p>
+
+                <InputError
+                  class="mt-2"
+                  :message="form.errors[`links.${index}.url`]"
+                />
               </div>
             </article>
           </SlickItem>

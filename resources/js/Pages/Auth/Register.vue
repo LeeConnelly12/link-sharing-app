@@ -2,6 +2,9 @@
 import Layout from '@/Layouts/GuestLayout.vue'
 import PrimaryButton from '@/Components/PrimaryButton.vue'
 import { Head, Link, useForm } from '@inertiajs/vue3'
+import InputLabel from '@/Components/InputLabel.vue'
+import TextInput from '@/Components/TextInput.vue'
+import InputError from '@/Components/InputError.vue'
 
 const form = useForm({
   email: '',
@@ -25,64 +28,51 @@ const submit = () => {
 
     <form @submit.prevent="submit" class="mt-10">
       <div>
-        <label class="block text-xs text-dark-gray" for="email">
-          Email address
-        </label>
+        <InputLabel for="email" value="Email address" />
 
-        <input
-          class="mt-2 h-12 w-full rounded-lg border border-borders px-4 placeholder:text-dark-gray/50"
-          placeholder="e.g. alex@email.com"
+        <TextInput
           id="email"
           type="email"
+          class="mt-1 block w-full"
+          placeholder="e.g. alex@email.com"
           v-model="form.email"
           required
           autocomplete="username"
         />
 
-        <p v-if="form.errors.email" class="mt-2 text-xs text-red-500">
-          {{ form.errors.email }}
-        </p>
+        <InputError class="mt-2" :message="form.errors.email" />
       </div>
 
       <div class="mt-6">
-        <label class="block text-xs text-dark-gray" for="password">
-          Password
-        </label>
+        <InputLabel for="password" value="Password" />
 
-        <input
+        <TextInput
           id="password"
-          class="mt-2 h-12 w-full rounded-lg border border-borders px-4 placeholder:text-dark-gray/50"
-          placeholder="Enter your password"
           type="password"
+          class="mt-1 block w-full"
+          placeholder="At least 8 characters"
           v-model="form.password"
+          required
           autocomplete="new-password"
         />
 
-        <p v-if="form.errors.password" class="mt-2 text-xs text-red-500">
-          {{ form.errors.password }}
-        </p>
+        <InputError class="mt-2" :message="form.errors.password" />
       </div>
 
       <div class="mt-6">
-        <label class="block text-xs text-dark-gray" for="password_confirmation">
-          Confirm Password
-        </label>
+        <InputLabel for="password_confirmation" value="Confirm Password" />
 
-        <input
+        <TextInput
           id="password_confirmation"
-          class="mt-2 h-12 w-full rounded-lg border border-borders px-4 placeholder:text-dark-gray/50"
-          placeholder="At least 8 characters"
           type="password"
+          class="mt-1 block w-full"
+          placeholder="At least 8 characters"
           v-model="form.password_confirmation"
+          required
           autocomplete="new-password"
         />
 
-        <p
-          v-if="form.errors.password_confirmation"
-          class="mt-2 text-xs text-red-500"
-        >
-          {{ form.errors.password_confirmation }}
-        </p>
+        <InputError class="mt-2" :message="form.errors.password_confirmation" />
       </div>
 
       <div class="mt-6">

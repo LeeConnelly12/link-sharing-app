@@ -5,6 +5,9 @@ import Phone from '@/Components/Phone.vue'
 import { useForm, usePage, Link, Head } from '@inertiajs/vue3'
 import { computed } from 'vue'
 import { ref } from 'vue'
+import InputLabel from '@/Components/InputLabel.vue'
+import TextInput from '@/Components/TextInput.vue'
+import InputError from '@/Components/InputError.vue'
 
 const user = computed(() => usePage().props.auth.user)
 
@@ -35,7 +38,10 @@ function profilePictureChanged(file) {
       <div class="hidden place-items-center rounded-xl bg-white lg:grid">
         <Phone :user="form" :links="user.links" />
       </div>
-      <form @submit.prevent="submit" class="rounded-xl bg-white lg:h-[819px]">
+      <form
+        @submit.prevent="submit"
+        class="grid grid-rows-[auto_1fr_auto] rounded-xl bg-white lg:h-[819px]"
+      >
         <div class="px-6 sm:px-10 sm:pt-10">
           <h1 class="text-2xl font-bold text-dark-gray sm:text-[2rem]">
             Profile Details
@@ -128,59 +134,49 @@ function profilePictureChanged(file) {
 
         <div class="mt-6 px-6 sm:px-10">
           <div class="rounded-xl bg-light-gray p-5">
-            <!-- First name -->
             <div>
-              <label for="first_name" class="text-xs text-dark-gray"
-                >First name</label
-              >
-              <input
-                v-model="form.first_name"
-                placeholder=".e.g. John"
-                type="text"
-                class="mt-1 h-12 w-full rounded-lg border border-borders px-4 placeholder:text-dark-gray/50"
+              <InputLabel for="first_name" value="First name" />
+
+              <TextInput
                 id="first_name"
-                required
-              />
-              <p
-                v-if="form.errors.first_name"
-                class="mt-1 text-xs text-red-500"
-              >
-                {{ form.errors.first_name }}
-              </p>
-            </div>
-
-            <!-- Last name -->
-            <div class="mt-3">
-              <label for="last_name" class="text-xs text-dark-gray"
-                >Last name</label
-              >
-              <input
-                v-model="form.last_name"
-                placeholder="e.g. Doe"
                 type="text"
-                class="mt-1 h-12 w-full rounded-lg border border-borders px-4 placeholder:text-dark-gray/50"
-                id="last_name"
+                class="mt-1 block w-full"
+                placeholder=".e.g. John"
+                v-model="form.first_name"
                 required
               />
-              <p v-if="form.errors.last_name" class="mt-1 text-xs text-red-500">
-                {{ form.errors.last_name }}
-              </p>
+
+              <InputError class="mt-2" :message="form.errors.first_name" />
             </div>
 
-            <!-- Email -->
             <div class="mt-3">
-              <label for="email" class="text-xs text-dark-gray">Email</label>
-              <input
-                v-model="form.email"
-                placeholder="e.g. alex@email.com"
-                type="email"
-                class="mt-1 h-12 w-full rounded-lg border border-borders px-4 placeholder:text-dark-gray/50"
-                id="email"
+              <InputLabel for="last_name" value="Last name" />
+
+              <TextInput
+                id="last_name"
+                type="text"
+                class="mt-1 block w-full"
+                placeholder="e.g. Doe"
+                v-model="form.last_name"
                 required
               />
-              <p v-if="form.errors.email" class="mt-1 text-xs text-red-500">
-                {{ form.errors.email }}
-              </p>
+
+              <InputError class="mt-2" :message="form.errors.last_name" />
+            </div>
+
+            <div class="mt-3">
+              <InputLabel for="email" value="Email" />
+
+              <TextInput
+                id="email"
+                type="email"
+                class="mt-1 block w-full"
+                placeholder="e.g. alex@email.com"
+                v-model="form.email"
+                required
+              />
+
+              <InputError class="mt-2" :message="form.errors.email" />
             </div>
           </div>
         </div>
@@ -188,11 +184,7 @@ function profilePictureChanged(file) {
         <div
           class="mt-6 rounded-bl-xl rounded-br-xl border-t border-borders bg-white px-6 pb-4 pt-6 sm:px-10 sm:pb-6 sm:text-right"
         >
-          <PrimaryButton
-            class="sm:w-28"
-            :disabled="form.processing"
-            :loading="form.processing"
-          >
+          <PrimaryButton class="sm:w-28" :loading="form.processing">
             Save
           </PrimaryButton>
         </div>
