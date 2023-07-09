@@ -15,5 +15,5 @@ export function getColorForPlatform(platform) {
     'Stack Overflow': '#EC7100',
   }
 
-  return colors[platform]
+  return colors[platform] ?? '#FAFAFA'
 }
