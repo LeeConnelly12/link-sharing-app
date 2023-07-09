@@ -35,11 +35,8 @@ function profilePictureChanged(file) {
       <div class="hidden place-items-center rounded-xl bg-white lg:grid">
         <Phone :user="form" :links="user.links" />
       </div>
-      <form
-        @submit.prevent="submit"
-        class="rounded-xl bg-white py-4 sm:pb-6 sm:pt-10"
-      >
-        <div class="px-6 sm:px-10">
+      <form @submit.prevent="submit" class="rounded-xl bg-white lg:h-[819px]">
+        <div class="px-6 sm:px-10 sm:pt-10">
           <h1 class="text-2xl font-bold text-dark-gray sm:text-[2rem]">
             Profile Details
           </h1>
@@ -182,9 +179,9 @@ function profilePictureChanged(file) {
           </div>
         </div>
 
-        <hr class="mt-6 bg-borders sm:mt-10" />
-
-        <div class="mt-4 px-6 sm:mt-6 sm:px-10 sm:text-right">
+        <div
+          class="mt-6 rounded-bl-xl rounded-br-xl border-t border-borders bg-white px-6 pb-4 pt-6 sm:px-10 sm:pb-6 sm:text-right"
+        >
           <PrimaryButton
             class="sm:w-28"
             :disabled="form.processing"
