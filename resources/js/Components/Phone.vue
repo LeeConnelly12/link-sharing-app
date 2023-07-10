@@ -37,6 +37,7 @@ defineProps({
         cx="153.5"
         cy="112"
         r="48"
+        stroke="#633CFF"
         stroke-width="4"
         fill="url(#avatar)"
       ></circle>
