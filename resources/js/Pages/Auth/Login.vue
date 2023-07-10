@@ -35,7 +35,6 @@ const submit = () => {
           label="Email address"
           v-model="form.email"
           :error="form.errors.email"
-          autofocus
           autocomplete="username"
         />
       </div>
