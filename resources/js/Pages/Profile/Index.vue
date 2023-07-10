@@ -125,7 +125,7 @@ function profilePictureChanged(file) {
             </p>
             <p
               v-if="form.errors.profile_picture"
-              class="mt-1 text-xs text-red-500"
+              class="text-red-500 mt-1 text-xs"
             >
               {{ form.errors.profile_picture }}
             </p>
@@ -135,48 +135,39 @@ function profilePictureChanged(file) {
         <div class="mt-6 px-6 sm:px-10">
           <div class="rounded-xl bg-light-gray p-5">
             <div>
-              <InputLabel for="first_name" value="First name" />
-
               <TextInput
                 id="first_name"
                 type="text"
                 class="mt-1 block w-full"
                 placeholder=".e.g. John"
+                label="First name"
                 v-model="form.first_name"
-                required
+                :error="form.errors.first_name"
               />
-
-              <InputError class="mt-2" :message="form.errors.first_name" />
             </div>
 
             <div class="mt-3">
-              <InputLabel for="last_name" value="Last name" />
-
               <TextInput
                 id="last_name"
                 type="text"
                 class="mt-1 block w-full"
                 placeholder="e.g. Doe"
+                label="Last name"
                 v-model="form.last_name"
-                required
+                :error="form.errors.last_name"
               />
-
-              <InputError class="mt-2" :message="form.errors.last_name" />
             </div>
 
             <div class="mt-3">
-              <InputLabel for="email" value="Email" />
-
               <TextInput
                 id="email"
                 type="email"
                 class="mt-1 block w-full"
                 placeholder="e.g. alex@email.com"
+                label="Email"
                 v-model="form.email"
-                required
+                :error="form.errors.email"
               />
-
-              <InputError class="mt-2" :message="form.errors.email" />
             </div>
           </div>
         </div>

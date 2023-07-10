@@ -7,7 +7,6 @@ import SecondaryButton from '@/Components/SecondaryButton.vue'
 import { useForm, Head, usePage } from '@inertiajs/vue3'
 import { computed } from 'vue'
 import { SlickList, SlickItem, DragHandle } from 'vue-slicksort'
-import InputLabel from '@/Components/InputLabel.vue'
 import TextInput from '@/Components/TextInput.vue'
 import InputError from '@/Components/InputError.vue'
 
@@ -105,29 +104,19 @@ function submit() {
                   label="Platform"
                   :options="platforms"
                   placeholder="Select platform"
-                />
-
-                <InputError
-                  class="mt-2"
-                  :message="form.errors[`links.${index}.platform`]"
+                  :error="form.errors[`links.${index}.platform`]"
                 />
               </div>
 
               <div class="col-span-full mt-3">
-                <InputLabel :for="`link_${index}`" value="Link" />
-
                 <TextInput
                   :id="`link_${index}`"
                   type="text"
                   class="mt-1 block w-full"
                   placeholder="e.g. https://www.github.com/johnappleseed"
+                  label="Link"
                   v-model="link.url"
-                  required
-                />
-
-                <InputError
-                  class="mt-2"
-                  :message="form.errors[`links.${index}.url`]"
+                  :error="form.errors[`links.${index}.url`]"
                 />
               </div>
             </article>

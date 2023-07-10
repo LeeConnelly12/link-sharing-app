@@ -19,6 +19,14 @@ defineProps({
     type: String,
     required: false,
   },
+  error: {
+    type: String,
+    required: false,
+  },
+})
+
+defineOptions({
+  inheritAttrs: false,
 })
 
 const open = ref(false)
@@ -30,14 +38,16 @@ defineEmits(['update:modelValue'])
 
 <template>
   <div
+    :class="$attrs.class"
     v-on-click-outside="() => (open = false)"
     class="relative"
     ref="ignoreElement"
   >
     <p class="text-xs">{{ label }}</p>
     <label
-      :for="`platform_${index}`"
-      class="mt-1 flex h-12 w-full items-center justify-between rounded-lg border border-borders bg-white px-4"
+      class="relative mt-1 flex h-12 w-full items-center justify-between rounded-lg border border-borders bg-white px-4"
+      :class="{ 'border-red': error }"
+      v-bind="{ ...$attrs, class: null }"
     >
       <p v-if="modelValue">{{ modelValue }}</p>
       <p v-else class="text-dark-gray/50">{{ placeholder }}</p>
@@ -56,6 +66,11 @@ defineEmits(['update:modelValue'])
         type="button"
         class="absolute inset-0 h-full w-full"
       ></button>
+      <div v-show="error" class="absolute right-10">
+        <p class="text-sm text-red">
+          {{ error }}
+        </p>
+      </div>
     </label>
     <ul
       v-if="open"

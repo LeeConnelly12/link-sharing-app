@@ -27,36 +27,30 @@ const submit = () => {
 
     <form @submit.prevent="submit" class="mt-10">
       <div>
-        <InputLabel for="email" value="Email address" />
-
         <TextInput
           id="email"
           type="email"
           class="mt-1 block w-full"
           placeholder="e.g. alex@email.com"
+          label="Email address"
           v-model="form.email"
-          required
+          :error="form.errors.email"
           autofocus
           autocomplete="username"
         />
-
-        <InputError class="mt-2" :message="form.errors.email" />
       </div>
 
       <div class="mt-6">
-        <InputLabel for="password" value="Password" />
-
         <TextInput
           id="password"
           type="password"
           class="mt-1 block w-full"
           placeholder="Enter your password"
+          label="Password"
           v-model="form.password"
-          required
+          :error="form.errors.password"
           autocomplete="current-password"
         />
-
-        <InputError class="mt-2" :message="form.errors.password" />
       </div>
 
       <div class="mt-6">
