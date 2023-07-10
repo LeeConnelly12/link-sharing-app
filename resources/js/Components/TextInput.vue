@@ -53,7 +53,7 @@ defineExpose({ focus: () => input.value.focus() })
       />
 
       <div v-show="error" class="absolute right-4">
-        <p class="text-sm text-red">
+        <p class="pointer-events-auto text-sm text-red">
           {{ error }}
         </p>
       </div>

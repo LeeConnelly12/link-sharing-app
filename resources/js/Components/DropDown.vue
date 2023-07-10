@@ -67,7 +67,7 @@ defineEmits(['update:modelValue'])
         class="absolute inset-0 h-full w-full"
       ></button>
       <div v-show="error" class="absolute right-10">
-        <p class="text-sm text-red">
+        <p class="pointer-events-none text-sm text-red">
           {{ error }}
         </p>
       </div>
