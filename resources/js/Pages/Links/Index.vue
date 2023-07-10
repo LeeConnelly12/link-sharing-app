@@ -82,12 +82,13 @@ function submit() {
               <DragHandle class="cursor-pointer">
                 <img
                   src="/images/icon-drag-and-drop.svg"
+                  class="pointer-events-none"
                   width="12"
                   height="6"
                   alt=""
                 />
               </DragHandle>
-              <p class="font-bold">Link #{{ index + 1 }}</p>
+              <p class="select-none font-bold">Link #{{ index + 1 }}</p>
 
               <button
                 @click="removeLink(index)"
