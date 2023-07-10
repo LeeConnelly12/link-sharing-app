@@ -1,5 +1,5 @@
 <script setup>
-import { getColorForPlatform } from '@/platforms.js'
+import { getColorForPlatform, getIconForPlatform } from '@/platforms.js'
 
 defineProps({
   link: {
@@ -13,12 +13,15 @@ defineProps({
   <a
     :href="link.url"
     :style="`background-color: ${getColorForPlatform(link.platform)}`"
-    class="flex items-center justify-between rounded-lg p-4"
+    class="grid grid-cols-[auto_1fr_auto] items-center justify-between rounded-lg px-4 gap-x-2"
+    target="_blank"
+    rel="noopener noreferrer"
     :class="
       { 'borders border': link.platform === 'Frontend Mentor' },
       link.platform === 'Frontend Mentor' ? 'text-dark-gray' : 'text-white'
     "
   >
+    <img :src="getIconForPlatform(link.platform)" alt="">
     <p>{{ link.platform }}</p>
     <svg width="16" height="16" fill="none" viewBox="0 0 16 16">
       <path

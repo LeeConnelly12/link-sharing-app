@@ -16,7 +16,7 @@ defineProps({
     <Head title="Preview" />
 
     <img
-      class="inline-block rounded-full border-4 border-purple object-cover"
+      class="inline-block aspect-square rounded-full border-4 border-purple object-cover"
       :src="user.profile_picture"
       width="112"
       height="112"

@@ -1,6 +1,7 @@
 <script setup>
 import { ref } from 'vue'
 import { vOnClickOutside } from '@vueuse/components'
+import { getGrayIconForPlatform } from '@/platforms'
 
 defineProps({
   modelValue: {
@@ -49,7 +50,10 @@ defineEmits(['update:modelValue'])
       :class="{ 'border-red': error }"
       v-bind="{ ...$attrs, class: null }"
     >
-      <p v-if="modelValue">{{ modelValue }}</p>
+      <div v-if="modelValue" class="flex gap-x-1">
+        <img :src="getGrayIconForPlatform(modelValue)" alt="" />
+        <p>{{ modelValue }}</p>
+      </div>
       <p v-else class="text-dark-gray/50">{{ placeholder }}</p>
       <svg
         class="transform"
@@ -81,8 +85,14 @@ defineEmits(['update:modelValue'])
         <button
           @click="$emit('update:modelValue', option), (open = false)"
           type="button"
-          class="h-full w-full px-4 py-3 text-left"
+          class="flex h-full w-full gap-x-2 px-4 py-3 text-left"
         >
+          <img
+            :src="getGrayIconForPlatform(option)"
+            width="16"
+            height="16"
+            alt=""
+          />
           {{ option }}
         </button>
       </li>

@@ -17,3 +17,43 @@ export function getColorForPlatform(platform) {
 
   return colors[platform] ?? '#FAFAFA'
 }
+
+export function getIconForPlatform(platform) {
+  const icons = {
+    'Github': '/images/icon-github.svg',
+    'Frontend Mentor': '/images/icon-frontend-mentor.svg',
+    'Twitter': '/images/icon-twitter.svg',
+    'LinkedIn': '/images/icon-linkedin.svg',
+    'Youtube': '/images/icon-youtube.svg',
+    'Facebook': '/images/icon-facebook.svg',
+    'Twitch': '/images/icon-twitch.svg',
+    'Dev.to': '/images/icon-devto.svg',
+    'Codewars': '/images/icon-codewars.svg',
+    'freeCodeCamp': '/images/icon-freecodecamp.svg',
+    'GitLab': '/images/icon-gitlab.svg',
+    'Hashnode': '/images/icon-hashnode.svg',
+    'Stack Overflow': '/images/icon-stack-overflow.svg',
+  }
+
+  return icons[platform]
+}
+
+export function getGrayIconForPlatform(platform) {
+  const icons = {
+    'Github': '/images/icon-github-gray.svg',
+    'Frontend Mentor': '/images/icon-frontend-mentor-gray.svg',
+    'Twitter': '/images/icon-twitter-gray.svg',
+    'LinkedIn': '/images/icon-linkedin-gray.svg',
+    'Youtube': '/images/icon-youtube-gray.svg',
+    'Facebook': '/images/icon-facebook-gray.svg',
+    'Twitch': '/images/icon-twitch-gray.svg',
+    'Dev.to': '/images/icon-devto-gray.svg',
+    'Codewars': '/images/icon-codewars-gray.svg',
+    'freeCodeCamp': '/images/icon-freecodecamp-gray.svg',
+    'GitLab': '/images/icon-gitlab-gray.svg',
+    'Hashnode': '/images/icon-hashnode-gray.svg',
+    'Stack Overflow': '/images/icon-stack-overflow-gray.svg',
+  }
+
+  return icons[platform]
+}
