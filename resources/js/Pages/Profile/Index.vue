@@ -5,9 +5,7 @@ import Phone from '@/Components/Phone.vue'
 import { useForm, usePage, Link, Head } from '@inertiajs/vue3'
 import { computed } from 'vue'
 import { ref } from 'vue'
-import InputLabel from '@/Components/InputLabel.vue'
 import TextInput from '@/Components/TextInput.vue'
-import InputError from '@/Components/InputError.vue'
 
 const user = computed(() => usePage().props.auth.user)
 
@@ -19,6 +17,7 @@ const form = useForm({
 })
 
 const url = ref(user.value.profile_picture)
+form.profile_picture = url.value
 
 async function submit() {
   form.post('/profile')
@@ -36,7 +35,7 @@ function profilePictureChanged(file) {
 
     <div class="lg:grid lg:grid-cols-2 lg:gap-x-6 xl:grid-cols-[1fr_1.5fr]">
       <div class="hidden place-items-center rounded-xl bg-white lg:grid">
-        <Phone :user="form" :links="user.links" />
+        <Phone :user="{ ...form, profile_picture: url }" :links="user.links" />
       </div>
       <form
         @submit.prevent="submit"

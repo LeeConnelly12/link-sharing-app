@@ -8,7 +8,6 @@ import { useForm, Head, usePage } from '@inertiajs/vue3'
 import { computed } from 'vue'
 import { SlickList, SlickItem, DragHandle } from 'vue-slicksort'
 import TextInput from '@/Components/TextInput.vue'
-import InputError from '@/Components/InputError.vue'
 
 const props = defineProps({
   links: Array,
