@@ -41,6 +41,6 @@ class ProfileController extends Controller
                 ->toMediaCollection('profile_picture');
         }
 
-        return back();
+        return back()->with('message', 'Your changes have been successfully saved!');
     }
 }

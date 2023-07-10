@@ -12,7 +12,7 @@ import InputError from '@/Components/InputError.vue'
 const user = computed(() => usePage().props.auth.user)
 
 const form = useForm({
-  profile_picture: user.value.profile_picture,
+  profile_picture: null,
   first_name: user.value.first_name,
   last_name: user.value.last_name,
   email: user.value.email,

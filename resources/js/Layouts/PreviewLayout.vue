@@ -2,12 +2,16 @@
 import PrimaryButton from '@/Components/PrimaryButton.vue'
 import { Link, usePage } from '@inertiajs/vue3'
 import { computed } from 'vue'
+import { Toaster, toast } from 'vue-sonner'
 
 const user = computed(() => usePage().props.auth.user)
 
 async function copyShareLinkToClipboard() {
   const url = route('previews.show', user.value)
+
   await navigator.clipboard.writeText(url)
+
+  toast.success('The link has been copied to your clipboard!')
 }
 </script>
 
@@ -40,4 +44,6 @@ async function copyShareLinkToClipboard() {
   >
     <slot />
   </main>
+
+  <Toaster :expand="true" position="bottom-center" />
 </template>

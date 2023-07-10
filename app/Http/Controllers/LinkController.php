@@ -43,6 +43,6 @@ class LinkController extends Controller
             ]);
         }
 
-        return back();
+        return back()->with('message', 'Your changes have been successfully saved!');
     }
 }

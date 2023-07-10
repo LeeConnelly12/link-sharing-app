@@ -21,6 +21,7 @@
         "vue": "^3.2.41"
     },
     "dependencies": {
-        "vue-slicksort": "^2.0.5"
+        "vue-slicksort": "^2.0.5",
+        "vue-sonner": "^0.3.3"
     }
 }
