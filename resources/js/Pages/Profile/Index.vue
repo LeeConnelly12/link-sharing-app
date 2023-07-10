@@ -180,16 +180,5 @@ function profilePictureChanged(file) {
         </div>
       </form>
     </div>
-
-    <div class="mt-4 text-center sm:mt-6 sm:pr-10 sm:text-right">
-      <Link
-        :href="route('logout')"
-        method="post"
-        as="button"
-        class="rounded-md text-purple focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
-      >
-        Log Out
-      </Link>
-    </div>
   </Layout>
 </template>
