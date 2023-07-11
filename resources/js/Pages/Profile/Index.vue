@@ -17,7 +17,6 @@ const form = useForm({
 })
 
 const url = ref(user.value.profile_picture)
-form.profile_picture = url.value
 
 async function submit() {
   form.post('/profile')
