@@ -136,7 +136,7 @@ function profilePictureChanged(file) {
               <TextInput
                 id="first_name"
                 type="text"
-                class="mt-1 block w-full"
+                class="mt-1 block w-full items-center xl:grid xl:grid-cols-[10rem_1fr]"
                 placeholder=".e.g. John"
                 label="First name"
                 v-model="form.first_name"
@@ -148,7 +148,7 @@ function profilePictureChanged(file) {
               <TextInput
                 id="last_name"
                 type="text"
-                class="mt-1 block w-full"
+                class="mt-1 block w-full items-center xl:grid xl:grid-cols-[10rem_1fr]"
                 placeholder="e.g. Doe"
                 label="Last name"
                 v-model="form.last_name"
@@ -160,7 +160,7 @@ function profilePictureChanged(file) {
               <TextInput
                 id="email"
                 type="email"
-                class="mt-1 block w-full"
+                class="mt-1 block w-full items-center xl:grid xl:grid-cols-[10rem_1fr]"
                 placeholder="e.g. alex@email.com"
                 label="Email"
                 v-model="form.email"
