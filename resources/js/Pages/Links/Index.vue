@@ -85,7 +85,7 @@ function submit() {
                   class="pointer-events-none"
                   width="12"
                   height="6"
-                  alt=""
+                  alt="Click to drag and drop links."
                 />
               </DragHandle>
               <p class="select-none font-bold">Link #{{ index + 1 }}</p>

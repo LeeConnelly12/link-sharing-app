@@ -20,7 +20,7 @@ defineProps({
       :src="user.profile_picture"
       width="112"
       height="112"
-      alt=""
+      alt="Profile picture"
     />
     <h1 class="mt-6 text-[2rem] font-bold text-dark-gray">
       {{ user.first_name }} {{ user.last_name }}

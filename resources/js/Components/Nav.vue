@@ -19,7 +19,7 @@ import { Link } from '@inertiajs/vue3'
               src="/images/logo-devlinks-small.svg"
               width="32"
               height="32"
-              alt=""
+              alt="devlink's logo."
             />
           </picture>
         </Link>

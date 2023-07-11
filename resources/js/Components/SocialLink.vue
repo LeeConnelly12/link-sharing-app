@@ -21,7 +21,7 @@ defineProps({
       link.platform === 'Frontend Mentor' ? 'text-dark-gray' : 'text-white'
     "
   >
-    <img :src="getIconForPlatform(link.platform)" alt="">
+    <img :src="getIconForPlatform(link.platform)" :alt="`${link.platform}'s logo'`">
     <p>{{ link.platform }}</p>
     <svg width="16" height="16" fill="none" viewBox="0 0 16 16">
       <path

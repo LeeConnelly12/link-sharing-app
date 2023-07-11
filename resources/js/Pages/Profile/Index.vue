@@ -95,7 +95,7 @@ function profilePictureChanged(file) {
                 :src="url"
                 width="192"
                 height="192"
-                alt=""
+                alt="Profile picture preview"
                 class="h-full w-full object-cover"
               />
               <div

@@ -51,7 +51,10 @@ defineEmits(['update:modelValue'])
       v-bind="{ ...$attrs, class: null }"
     >
       <div v-if="modelValue" class="flex gap-x-3">
-        <img :src="getGrayIconForPlatform(modelValue)" alt="" />
+        <img
+          :src="getGrayIconForPlatform(modelValue)"
+          :alt="`${modelValue}'s logo'`"
+        />
         <p>{{ modelValue }}</p>
       </div>
       <p v-else class="text-dark-gray/50">{{ placeholder }}</p>
@@ -91,7 +94,7 @@ defineEmits(['update:modelValue'])
             :src="getGrayIconForPlatform(option)"
             width="16"
             height="16"
-            alt=""
+            :alt="`${modelValue}'s logo'`"
           />
           {{ option }}
         </button>
