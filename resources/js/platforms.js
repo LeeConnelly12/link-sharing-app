@@ -15,7 +15,7 @@ export function getColorForPlatform(platform) {
     'Stack Overflow': '#EC7100',
   }
 
-  return colors[platform] ?? '#FAFAFA'
+  return colors[platform] ?? '#EEE'
 }
 
 export function getIconForPlatform(platform) {
