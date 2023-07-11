@@ -78,7 +78,7 @@ defineEmits(['update:modelValue'])
     </label>
     <ul
       v-if="open"
-      class="absolute left-0 right-0 top-full z-10 mt-2 grid max-h-[195px] gap-[1px] overflow-hidden overflow-y-auto rounded-lg bg-light-gray shadow-sm"
+      class="absolute left-0 right-0 top-full z-10 mt-2 grid max-h-[195px] gap-[1px] overflow-hidden overflow-y-auto rounded-lg bg-light-gray shadow-lg"
       tabindex="-1"
     >
       <li v-for="option in options" :key="option" class="bg-white">
