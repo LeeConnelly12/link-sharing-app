@@ -13,7 +13,7 @@ defineProps({
   <a
     :href="link.url"
     :style="`background-color: ${getColorForPlatform(link.platform)}`"
-    class="grid grid-cols-[auto_1fr_auto] items-center justify-between rounded-lg px-4 gap-x-2"
+    class="grid grid-cols-[auto_1fr_auto] items-center rounded-lg px-4 gap-x-2 text-left"
     target="_blank"
     rel="noopener noreferrer"
     :class="

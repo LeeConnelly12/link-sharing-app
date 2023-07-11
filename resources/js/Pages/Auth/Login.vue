@@ -35,6 +35,7 @@ const submit = () => {
           label="Email address"
           v-model="form.email"
           :error="form.errors.email"
+          icon="/images/icon-email.svg"
           autocomplete="username"
         />
       </div>
@@ -48,6 +49,7 @@ const submit = () => {
           label="Password"
           v-model="form.password"
           :error="form.errors.password"
+          icon="/images/icon-password.svg"
           autocomplete="current-password"
         />
       </div>

@@ -116,6 +116,7 @@ function submit() {
                   placeholder="e.g. https://www.github.com/johnappleseed"
                   label="Link"
                   v-model="link.url"
+                  icon="/images/icon-link.svg"
                   :error="form.errors[`links.${index}.url`]"
                 />
               </div>

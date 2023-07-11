@@ -24,7 +24,12 @@ defineProps({
     </h1>
     <p class="mt-2">{{ user.email }}</p>
     <div class="mt-14 grid gap-y-5">
-      <SocialLink v-for="link in user.links" :key="link.id" :link="link" />
+      <SocialLink
+        v-for="link in user.links"
+        :key="link.id"
+        :link="link"
+        class="h-14"
+      />
     </div>
   </Layout>
 </template>

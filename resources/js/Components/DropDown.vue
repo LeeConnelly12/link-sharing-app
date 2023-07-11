@@ -50,7 +50,7 @@ defineEmits(['update:modelValue'])
       :class="{ 'border-red': error }"
       v-bind="{ ...$attrs, class: null }"
     >
-      <div v-if="modelValue" class="flex gap-x-1">
+      <div v-if="modelValue" class="flex gap-x-3">
         <img :src="getGrayIconForPlatform(modelValue)" alt="" />
         <p>{{ modelValue }}</p>
       </div>
@@ -85,7 +85,7 @@ defineEmits(['update:modelValue'])
         <button
           @click="$emit('update:modelValue', option), (open = false)"
           type="button"
-          class="flex h-full w-full gap-x-2 px-4 py-3 text-left"
+          class="flex h-full w-full gap-x-3 px-4 py-3 text-left"
         >
           <img
             :src="getGrayIconForPlatform(option)"

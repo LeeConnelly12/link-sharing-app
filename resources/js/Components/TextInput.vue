@@ -15,6 +15,10 @@ defineProps({
     type: String,
     required: true,
   },
+  icon: {
+    type: String,
+    required: false,
+  },
   error: {
     type: String,
     required: false,
@@ -42,10 +46,16 @@ defineExpose({ focus: () => input.value.focus() })
   <div :class="$attrs.class">
     <InputLabel :for="id" :value="label" :class="{ 'text-red': error }" />
     <div class="relative mt-2 flex items-center border-0 p-0">
+      <img
+        class="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2"
+        :src="icon"
+        alt=""
+      />
+
       <input
         v-bind="{ ...$attrs, class: null }"
-        class="h-12 w-full rounded-lg border border-borders px-4 placeholder:text-dark-gray/50 focus:border-indigo-500 focus:ring-indigo-500"
-        :class="{ 'border-red': error }"
+        class="h-12 w-full rounded-lg border border-borders placeholder:text-dark-gray/50 focus:border-indigo-500 focus:ring-indigo-500"
+        :class="{ 'border-red': error }, icon ? 'pl-11 pr-4' : 'px-4'"
         :value="modelValue"
         :id="id"
         @input="$emit('update:modelValue', $event.target.value)"

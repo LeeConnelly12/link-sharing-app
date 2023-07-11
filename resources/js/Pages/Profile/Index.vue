@@ -165,6 +165,7 @@ function profilePictureChanged(file) {
                 placeholder="e.g. alex@email.com"
                 label="Email"
                 v-model="form.email"
+                icon="/images/icon-email.svg"
                 :error="form.errors.email"
               />
             </div>
