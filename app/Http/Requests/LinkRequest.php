@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use App\Enums\Platform;
+use App\Rules\ValidPlatformURL;
 use Illuminate\Validation\Rules\Enum;
 use Illuminate\Foundation\Http\FormRequest;
 
@@ -26,7 +27,7 @@ class LinkRequest extends FormRequest
         return [
             'links' => ['nullable', 'array'],
             'links.*.platform' => ['required', new Enum(Platform::class)],
-            'links.*.url' => ['required', 'url', 'max:255'],
+            'links.*.url' => ['required', 'url', 'max:255', new ValidPlatformURL($this->links)],
         ];
     }
 
