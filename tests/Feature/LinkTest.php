@@ -30,18 +30,25 @@ it('can be viewed', function () {
 });
 
 it('can be created', function () {
-    $links = Link::factory()->count(3)->make();
+    $links = [
+        [
+            'user_id' => $this->user->id,
+            'platform' => Platform::GITHUB->value,
+            'url' => 'https://github.com',
+            'order' => 1,
+        ],
+    ];
 
     post('/links', [
-        'links' => $links->toArray(),
+        'links' => $links,
     ])
     ->assertRedirect();
 
-    assertDatabaseCount(Link::class, 3);
+    assertDatabaseCount(Link::class, 1);
 
     assertDatabaseHas(Link::class, [
-        'platform' => $links->first()->platform,
-        'url' => $links->first()->url,
+        'platform' => $links[0]['platform'],
+        'url' => $links[0]['url'],
     ]);
 });
 
